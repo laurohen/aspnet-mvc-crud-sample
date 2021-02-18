@@ -1,0 +1,98 @@
+﻿@model aspnet_mvc_crud.Models.FuncionarioModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEdit" asp-route-id="@Model.FuncionarioId" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FuncionarioId" />
+
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input asp-for="Nome" class="form-control" />
+                </div>
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DataNascimento" class="control-label"></label>
+                        <input asp-for="DataNascimento" class="form-control" />
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Salario" class="control-label"></label>
+                        <input asp-for="Salario" class="form-control" />
+                        <span asp-validation-for="Salario" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FK_Estado, htmlAttributes: new { @class = "control-label" })
+                        <div>
+                            @Html.DropDownList("FK_Estado", new List<SelectListItem>
+                                     { new SelectListItem { Text = "AC", Value = "1"},
+                                       new SelectListItem { Text = "AL", Value = "2"},
+                                       new SelectListItem { Text = "AP", Value = "3"},
+                                       new SelectListItem { Text = "AM", Value = "4"},
+                                       new SelectListItem { Text = "BA", Value = "5"},
+                                       new SelectListItem { Text = "CE", Value = "6"},
+                                       new SelectListItem { Text = "DF", Value = "7"},
+                                       new SelectListItem { Text = "ES", Value = "8"},
+                                       new SelectListItem { Text = "GO", Value = "9"},
+                                       new SelectListItem { Text = "MA", Value = "10"},
+                                       new SelectListItem { Text = "MT", Value = "11"},
+                                       new SelectListItem { Text = "MS", Value = "12"},
+                                       new SelectListItem { Text = "MG", Value = "13"},
+                                       new SelectListItem { Text = "PA", Value = "14"},
+                                       new SelectListItem { Text = "PB", Value = "15"},
+                                       new SelectListItem { Text = "PR", Value = "16"},
+                                       new SelectListItem { Text = "PE", Value = "17"},
+                                       new SelectListItem { Text = "PI", Value = "18"},
+                                       new SelectListItem { Text = "RJ", Value = "19"},
+                                       new SelectListItem { Text = "RN", Value = "20"},
+                                       new SelectListItem { Text = "RS", Value = "21"},
+                                       new SelectListItem { Text = "RO", Value = "22"},
+                                       new SelectListItem { Text = "RR", Value = "23"},
+                                       new SelectListItem { Text = "SC", Value = "24"},
+                                       new SelectListItem { Text = "SP", Value = "25"},
+                                       new SelectListItem { Text = "SE", Value = "26"},
+                                       new SelectListItem { Text = "TO", Value = "27"}
+                                       }, "Selecao UF", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                    
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Salvar" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

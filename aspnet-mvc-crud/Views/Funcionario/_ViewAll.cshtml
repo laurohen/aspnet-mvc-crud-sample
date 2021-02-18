@@ -1,0 +1,59 @@
+﻿@model IEnumerable<aspnet_mvc_crud.Models.FuncionarioModel>
+
+    <div class="col-md-8 offset-md-2">
+
+        <h1 class="text-center"><i class="fas fa-comments-dollar text-success"></i> Listagem de Funcionarios </h1>
+
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataNascimento)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Salario)
+                    </th>
+                    
+                    <th>
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Funcionario",null,Context.Request.Scheme)','Novo cadastro')" class="btn btn-success text-white"><i class="fas fa-random"></i> Novo cadastro</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DataNascimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salario)
+                    </td>
+                    
+                    <td>
+                        <div>
+                            <a onclick="showInPopup('@Url.Action("AddOrEdit","Funcionario",new {id=item.FuncionarioId},Context.Request.Scheme)','Atualizar cadastro')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <form asp-action="Delete" asp-route-id="@item.FuncionarioId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                <input type="hidden" asp-for="@item.FuncionarioId" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
