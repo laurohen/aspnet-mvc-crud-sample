@@ -4,7 +4,8 @@
  
 ## Was used:
 - net core
-- Entity Framework Core msql
+- Entity Framework Core 
+- msql
 - MVC architecture
 - Dockerfile
 - dockercompose
